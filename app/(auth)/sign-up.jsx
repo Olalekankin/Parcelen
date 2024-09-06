@@ -24,7 +24,7 @@ const SignUp = () => {
         <ScrollView className=''>
           <View className='bg-white'>
             <View className=''>
-              <View className='bg-primary py-3 px-4 h-1/4 z-50'>
+              <View className='bg-primary py-3.5 px-4  z-50'>
                 <TouchableOpacity
                   className='py-2'
                   onPress={() => router.back()}
@@ -35,30 +35,30 @@ const SignUp = () => {
                     color='white'
                   />
                 </TouchableOpacity>
-                <Text className='text-white mt-8 text-2xl font-semibold'>
+                <Text className='text-white mt-8 text-2xl font-cbold'>
                   Create account
                 </Text>
-                <Text className='text-white mt-2 text-sm'>
+                <Text className='text-white mt-2 text-sm font-cregular'>
                   Welcome aboard! Fill in your details below to create your
                   personal account
                 </Text>
               </View>
-              <View className='py-8 px-4 h-3/4  z-10'>
+              <View className='mt-6 px-4 h-3/4  z-10'>
                 <View className=' text-white flex flex-row justify-between items-center'>
                   <View>
-                    <Text className='text-lg text-primary font-semibold'>
+                    <Text className='text-lg text-primary font-cbold'>
                       Profile
                     </Text>
                   </View>
 
                   <View className='flex flex-row items-center space-x-1'>
-                    <Text className='text-sm text-grey34'>
+                    <Text className='text-sm text-grey34 font-cregular'>
                       Already have an account?
                     </Text>
                     <TouchableOpacity
                       onPress={() => router.push('auth/sign-in')}
                     >
-                      <Text className='text-sm text-blueCB'>Log in</Text>
+                      <Text className='text-sm text-blueCB font-cmedium'>Log in</Text>
                     </TouchableOpacity>
                   </View>
                 </View>
