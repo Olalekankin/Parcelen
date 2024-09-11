@@ -3,7 +3,6 @@ import {
   Text,
   TouchableOpacity,
   TouchableWithoutFeedback,
-  TextInput,
   ScrollView,
 } from 'react-native'
 import React, { useState } from 'react'
@@ -11,31 +10,44 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import MaterialIcons from '@expo/vector-icons/MaterialIcons'
 import { router, useRouter } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
+import {InputBox} from '../../components'
+import PhoneInput from 'react-native-phone-number-input'
 
 const SignUp = () => {
   const router = useRouter()
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
+  const [email, setEmail] = useState('')
+  const [name, setName] = useState('')
+  
+
+  // This function will handle changes to email input
+  const handleEmailChange = (text) => {
+    setEmail(text)
+  }
+
+  // This function will handle changes to name input
+  const handleNameChange = (text) => {
+    setName(text)
+  }
 
   return (
     <>
-      <SafeAreaView>
+      <SafeAreaView className='min-h-screen bg-white'>
         <ScrollView className=''>
-          <View className='bg-white'>
+          <View className='relative'>
             <View className=''>
-              <View className='bg-primary py-3.5 px-4  z-50'>
-                <TouchableOpacity
-                  className='py-2'
-                  onPress={() => router.back()}
-                >
+              <View className='bg-primary px-4 py-4 fixed spa'>
+                <TouchableOpacity className='' onPress={() => router.back()}>
                   <MaterialIcons
                     name='arrow-back-ios-new'
                     size={14}
                     color='white'
                   />
                 </TouchableOpacity>
-                <Text className='text-white mt-8 text-2xl font-cbold'>
+
+                <Text className='text-white mt-4 text-2xl font-cbold'>
                   Create account
                 </Text>
                 <Text className='text-white mt-2 text-sm font-cregular'>
@@ -43,7 +55,8 @@ const SignUp = () => {
                   personal account
                 </Text>
               </View>
-              <View className='mt-6 px-4 h-3/4  z-10'>
+
+              <View className='px-4 py-8'>
                 <View className=' text-white flex flex-row justify-between items-center'>
                   <View>
                     <Text className='text-lg text-primary font-cbold'>
@@ -58,85 +71,75 @@ const SignUp = () => {
                     <TouchableOpacity
                       onPress={() => router.push('auth/sign-in')}
                     >
-                      <Text className='text-sm text-blueCB font-cmedium'>Log in</Text>
+                      <Text className='text-sm text-blueCB font-cmedium'>
+                        Log in
+                      </Text>
                     </TouchableOpacity>
                   </View>
                 </View>
                 <View className='mt-6'>
-                  <Text className='text-grey65'>First name</Text>
-                  <View className='relative'>
-                    <TextInput
-                      placeholder='Enter your email'
-                      value={firstName}
-                      onChangeText={setFirstName}
-                      className='px-4 py-3 rounded-lg text-grey34 mt-2 bg-greyF8 focus:border focus:border-primary'
-                    />
-                    <View className='absolute right-4 top-1/2 -translate-y-1/2 hidden'>
-                      <MaterialIcons
-                        name='check-circle'
-                        size={20}
-                        color='green'
-                      />
-                    </View>
-                  </View>
+                  <InputBox
+                    containerStyle='w-full'
+                    require={true}
+                    title='First name'
+                    value={firstName}
+                    handleChangeText={handleNameChange}
+                    placeholder='Enter your first name'
+                  />
                 </View>
                 <View className='mt-6'>
-                  <Text className='text-grey65'>Last name</Text>
-                  <View className='relative'>
-                    <TextInput
-                      placeholder='Enter your last name'
-                      value={lastName}
-                      onChangeText={setLastName}
-                      className='px-4 py-3 rounded-lg text-grey34 mt-2 bg-greyF8 focus:border focus:border-primary'
-                    />
-                    <View className='absolute right-4 top-1/2 -translate-y-1/2 hidden'>
-                      <MaterialIcons
-                        name='check-circle'
-                        size={20}
-                        color='green'
-                      />
-                    </View>
-                  </View>
+                  <InputBox
+                    containerStyle='w-full'
+                    require={true}
+                    title='Last name'
+                    value={lastName}
+                    handleChangeText={handleNameChange}
+                    placeholder='Enter your last name'
+                  />
                 </View>
                 <View className='mt-6'>
-                  <Text className='text-grey65'>Phone Number</Text>
-                  <View className='relative'>
-                    <TextInput
-                      placeholder='Enter your phone number'
-                      value={phoneNumber}
-                      onChangeText={setPhoneNumber}
-                      className='px-4 py-3 rounded-lg text-grey34 mt-2 bg-greyF8 focus:border focus:border-primary'
+                  <Text className='text-grey65 font-cmedium text-sm'>
+                    Phone Number
+                  </Text>
+                  <View className='relative mt-1 rounded-md'>
+                    <PhoneInput
+                      defaultCode='NG'
+                      containerStyle={{
+                        backgroundColor: '#F2F5F8',
+                        padding: '8px',
+                        width:'100%',
+                        placeholder: 'Phone number'
+                      }}
                     />
-                    <View className='absolute right-4 top-1/2 -translate-y-1/2 hidden'>
-                      <MaterialIcons
-                        name='check-circle'
-                        size={20}
-                        color='green'
-                      />
-                    </View>
                   </View>
                 </View>
-                <View className='mt-10  w-full flex-row flex-wrap text-xs items-center text-center space-x-1 justify-center'>
-                  <Text className='text-primary'>
+                <View className='mt-7  w-full flex-row flex-wrap text-xs items-center text-center space-x-1 justify-center'>
+                  <Text className='text-primary font-cregular'>
                     By creating an account, you agree to our
                   </Text>
                   <TouchableWithoutFeedback
                     className=''
                     onPress={() => router.push('pages/privacy')}
                   >
-                    <Text className='text-blueCB'>Privacy policy</Text>
+                    <Text className='text-blueCB font-cregular'>
+                      Privacy policy
+                    </Text>
                   </TouchableWithoutFeedback>
-                  <Text>and</Text>
+                  <Text className='font-cregular'>and</Text>
                   <TouchableWithoutFeedback className=''>
-                    <Text className='text-blueCB ml-1'>Terms & conditions</Text>
+                    <Text className='text-blueCB ml-1 font-cregular'>
+                      Terms & conditions
+                    </Text>
                   </TouchableWithoutFeedback>
                 </View>
-                <View className='mt-10'>
+                <View className='mt-7'>
                   <TouchableOpacity
-                    onPress={() => router.push('auth/sign-in')}
+                    
                     className='bg-greye4 flex justify-center items-center py-4 w-full rounded-md'
                   >
-                    <Text className='text-white text-center'> Login </Text>
+                    <Text className='text-white text-center font-cregular'>
+                      Continue
+                    </Text>
                   </TouchableOpacity>
                 </View>
               </View>
@@ -144,6 +147,7 @@ const SignUp = () => {
           </View>
         </ScrollView>
       </SafeAreaView>
+      <StatusBar style='light' backgroundColor='#355' />
     </>
   )
 }

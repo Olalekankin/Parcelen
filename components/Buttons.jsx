@@ -3,9 +3,12 @@ import React from 'react'
 
 const Buttons = ({handlePress, title, containerStyle, textStyle}) => {
   return (
-    <View className={`flex flex-row justify-center items-center py-4 rounded-md ${containerStyle}`}>
+    <View
+      className={`w-full rounded-md ${containerStyle}`}
+    >
       <TouchableOpacity
         onPress={handlePress}
+        className='w-full flex justify-center py-4'
       >
         <Text className={`text-center font-cmedium ${textStyle}`}>{title}</Text>
       </TouchableOpacity>

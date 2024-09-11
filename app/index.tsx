@@ -15,7 +15,7 @@ const Welcome = () =>{
     <>
       <SafeAreaView className='bg-white px-4 flex flex-1 justify-center h-full'>
         <View>
-          <Text className='text-primary font-semibold text-3xl text-center'>
+          <Text className='text-primary font-cbold text-3xl text-center'>
             Welcome Pal
           </Text>
         </View>
