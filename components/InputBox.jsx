@@ -61,7 +61,7 @@ const InputBox = ({
 
       <View className='relative mt-1 w-full flex flex-row items-center justify-between space-x-3'>
         <TextInput
-          className={`px-4 py-2.5 flex-grow text-grey34 rounded-md w-full  bg-greyF8 focus:border focus:border-primary ${
+          className={`px-4 py-3 flex-grow text-grey34 rounded-md w-full  bg-greyF8 focus:border focus:border-primary ${
             validated
               ? 'focus:border focus:border-green-400 '
               : 'border border-red-500'

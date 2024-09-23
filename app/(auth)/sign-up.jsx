@@ -10,21 +10,19 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import MaterialIcons from '@expo/vector-icons/MaterialIcons'
 import { router, useRouter } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
-import {InputBox} from '../../components'
-import PhoneInput from 'react-native-phone-number-input'
+import {InputBox, PhoneInputComponent} from '../../components'
+
 
 const SignUp = () => {
   const router = useRouter()
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
-  const [email, setEmail] = useState('')
-  const [name, setName] = useState('')
   
 
-  // This function will handle changes to email input
-  const handleEmailChange = (text) => {
-    setEmail(text)
+  const handlePhoneChange = (text) => {
+    setPhoneNumber(text)
+    
   }
 
   // This function will handle changes to name input
@@ -98,22 +96,13 @@ const SignUp = () => {
                   />
                 </View>
                 <View className='mt-6'>
-                  <Text className='text-grey65 font-cmedium text-sm'>
-                    Phone Number
-                  </Text>
-                  <View className='relative mt-1 rounded-md'>
-                    <PhoneInput
-                      defaultCode='NG'
-                      containerStyle={{
-                        backgroundColor: '#F2F5F8',
-                        padding: '8px',
-                        width:'100%',
-                        placeholder: 'Phone number'
-                      }}
-                    />
-                  </View>
+                  <PhoneInputComponent
+                    phoneNumber={phoneNumber}
+                    onPhoneChange={handlePhoneChange}
+                    title='Phone Number'
+                  />
                 </View>
-                <View className='mt-7  w-full flex-row flex-wrap text-xs items-center text-center space-x-1 justify-center'>
+                <View className='mt-8  w-full flex-row flex-wrap text-xs items-center text-center space-x-1 justify-center'>
                   <Text className='text-primary font-cregular'>
                     By creating an account, you agree to our
                   </Text>
@@ -132,16 +121,13 @@ const SignUp = () => {
                     </Text>
                   </TouchableWithoutFeedback>
                 </View>
-                <View className='mt-7'>
-                  <TouchableOpacity
-                    
-                    className='bg-greye4 flex justify-center items-center py-4 w-full rounded-md'
-                  >
-                    <Text className='text-white text-center font-cregular'>
-                      Continue
-                    </Text>
-                  </TouchableOpacity>
-                </View>
+              </View>
+              <View className='mt-5'>
+                <TouchableOpacity className='bg-greye4 flex justify-center items-center py-4 w-full rounded-md'>
+                  <Text className='text-white text-center font-cregular'>
+                    Continue
+                  </Text>
+                </TouchableOpacity>
               </View>
             </View>
           </View>
